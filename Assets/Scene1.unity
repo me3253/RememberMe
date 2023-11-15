@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 30384580}
   - component: {fileID: 30384579}
   m_Layer: 0
-  m_Name: Big Cupboard
+  m_Name: Big Shelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
