@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MovingFish : MonoBehaviour
 {
-    void Update() {
-        print(transform.localRotation.eulerAngles.y);
-        
+    void Update() {        
         if (transform.localRotation.eulerAngles.y == 0) {
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 0.005f);
 
