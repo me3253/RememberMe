@@ -5,9 +5,10 @@ using UnityEngine;
 public class GazeManager : MonoBehaviour
 {
     public LayerMask gazeReceivingMask;
-    public GameObject student, chalkboard;
+    public GameObject student, classWall;
 
     private new Camera camera;
+    private AudioSource ambience;
     private int lookCounter = 0;
     private bool lookAway = false;
 
@@ -15,6 +16,7 @@ public class GazeManager : MonoBehaviour
     void Start()
     {
         camera = this.GetComponent<Camera>();
+        ambience = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,21 +24,28 @@ public class GazeManager : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, Mathf.Infinity, gazeReceivingMask)) {
-            if (hit.collider.gameObject == chalkboard) {
-                lookAway = false;
+        if (!Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, Mathf.Infinity, gazeReceivingMask))
+            return;
 
-                if (lookCounter == 3)
-                    student.GetComponent<LookUp>().RaiseNeck();
-            }
+        // We have hit an object that can receive the raycast
 
-            if (lookAway)
-                return;
+        if (hit.collider.gameObject == classWall) {
+            lookAway = false;
 
-            if (hit.collider.gameObject == student) {
-                print(++lookCounter);
-                lookAway = true;
-            }
+            if (lookCounter == 3)
+                student.GetComponent<LookUp>().RaiseNeck();
+        }
+
+        if (lookAway)
+            return;
+
+        if (hit.collider.gameObject == student) {
+            print(++lookCounter);
+
+            if (lookCounter == 4)
+                StartCoroutine(AudioFadeOut.FadeOut(ambience, 1f));
+
+            lookAway = true;
         }
     }
 }
