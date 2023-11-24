@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 public class GazeManager : MonoBehaviour
 {
     public LayerMask gazeReceivingMask;
-    public GameObject student, classWall, book, greenGlobe, blueGlobe, fishTank, characterManager, audioManager, materialManager, darkEndState;
+    public GameObject student, classWall, book, greenGlobe, blueGlobe, fishTank, characterManager, audioManager, materialManager, headManager, darkEndState;
 
     private GameObject[] fishes = new GameObject[3];
     private CharacterManager charManager;
     private AudioManager sfx;
     private MaterialManager matManager;
+    private HeadManager heads;
     private new Camera camera;
     private int lookCounter = 0;
     private bool lookAway = false;
@@ -25,6 +26,7 @@ public class GazeManager : MonoBehaviour
         charManager = characterManager.GetComponent<CharacterManager>();
         sfx = audioManager.GetComponent<AudioManager>();
         matManager = materialManager.GetComponent<MaterialManager>();
+        heads = headManager.GetComponent<HeadManager>();
         fishes[0] = fishTank.GetNamedChild("Fish");
         fishes[1] = fishTank.GetNamedChild("Fish (1)");
         fishes[2] = fishTank.GetNamedChild("Fish (2)");
@@ -77,6 +79,7 @@ public class GazeManager : MonoBehaviour
             matManager.rulesPoster.GetComponent<SwapMaterial>().Swap();
             matManager.bullyPoster.GetComponent<SwapMaterial>().Swap();
             sfx.horror.Play();
+            heads.ShowAllHeads();
             student.GetComponent<Jumpscare>().setPosition();
         }
 
