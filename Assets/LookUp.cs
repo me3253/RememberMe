@@ -6,7 +6,7 @@ public class LookUp : MonoBehaviour
 {
     public GameObject neck;
 
-    public bool neckRaised{get; private set;}
+    public bool neckRaised{get; private set;} = false;
 
     public void RaiseNeck() {
         neck.transform.localEulerAngles = new Vector3(-55, neck.transform.localEulerAngles.y, neck.transform.localEulerAngles.z);

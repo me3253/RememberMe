@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class GazeManager : MonoBehaviour
 {
     public LayerMask gazeReceivingMask;
-    public GameObject student, classWall;
+    public GameObject student, classWall, book, greenGlobe, blueGlobe, fishTank;
+
+    private GameObject[] fishes = new GameObject[3];
 
     private new Camera camera;
     private AudioSource ambience;
@@ -17,6 +20,9 @@ public class GazeManager : MonoBehaviour
     {
         camera = this.GetComponent<Camera>();
         ambience = this.GetComponent<AudioSource>();
+        fishes[0] = fishTank.GetNamedChild("Fish");
+        fishes[1] = fishTank.GetNamedChild("Fish (1)");
+        fishes[2] = fishTank.GetNamedChild("Fish (2)");
     }
 
     // Update is called once per frame
@@ -32,7 +38,15 @@ public class GazeManager : MonoBehaviour
         if (hit.collider.gameObject == classWall) {
             lookAway = false;
 
-            if (lookCounter == 3)
+            if (lookCounter == 1 && !book.GetComponent<ThrowBook>().thrown)
+                book.GetComponent<ThrowBook>().Throw();
+            else if (lookCounter == 2 && !greenGlobe.GetComponent<Rotate>().enableRotation) {
+                greenGlobe.GetComponent<Rotate>().enableRotation = true;
+                blueGlobe.GetComponent<Rotate>().enableRotation = true;
+                foreach (GameObject fish in fishes)
+                    fish.GetComponent<MovingFish>().speed = 0.05f;
+            }
+            else if (lookCounter == 3 && !student.GetComponent<LookUp>().neckRaised)
                 student.GetComponent<LookUp>().RaiseNeck();
         }
 
