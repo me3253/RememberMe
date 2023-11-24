@@ -7272,8 +7272,9 @@ GameObject:
   - component: {fileID: 229857328}
   - component: {fileID: 229857327}
   - component: {fileID: 229857326}
+  - component: {fileID: 229857330}
   m_Layer: 0
-  m_Name: Poster (3)
+  m_Name: Bully Poster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7357,6 +7358,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 72
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &229857330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229857325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cc2de33263ced46b11062bc2a2763a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredMaterial: {fileID: 2100000, guid: 99487bc067d6e904aaf5024fe4c63692, type: 2}
 --- !u!1 &235496861
 GameObject:
   m_ObjectHideFlags: 0
@@ -14877,8 +14891,9 @@ GameObject:
   - component: {fileID: 568436835}
   - component: {fileID: 568436834}
   - component: {fileID: 568436833}
+  - component: {fileID: 568436837}
   m_Layer: 0
-  m_Name: Poster (2)
+  m_Name: Rules Poster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14962,6 +14977,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 71
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!114 &568436837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568436832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cc2de33263ced46b11062bc2a2763a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredMaterial: {fileID: 2100000, guid: 0cca8ca1b0faba44c956535f49a49f02, type: 2}
 --- !u!1 &569150441
 GameObject:
   m_ObjectHideFlags: 0
@@ -29157,8 +29185,9 @@ GameObject:
   - component: {fileID: 1061412336}
   - component: {fileID: 1061412335}
   - component: {fileID: 1061412334}
+  - component: {fileID: 1061412338}
   m_Layer: 0
-  m_Name: Poster
+  m_Name: Cat Poster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29242,6 +29271,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 69
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!114 &1061412338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061412333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cc2de33263ced46b11062bc2a2763a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredMaterial: {fileID: 2100000, guid: fcef2f546961d1d48bb9d1524b4ce0ff, type: 2}
 --- !u!1 &1066303184
 GameObject:
   m_ObjectHideFlags: 0
@@ -35504,8 +35546,9 @@ GameObject:
   - component: {fileID: 1372572810}
   - component: {fileID: 1372572809}
   - component: {fileID: 1372572808}
+  - component: {fileID: 1372572812}
   m_Layer: 0
-  m_Name: Poster (1)
+  m_Name: Mistake Poster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35589,6 +35632,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 70
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!114 &1372572812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372572807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cc2de33263ced46b11062bc2a2763a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredMaterial: {fileID: 2100000, guid: b541bd402246c0f49906c20e56e06615, type: 2}
 --- !u!1 &1386866424
 GameObject:
   m_ObjectHideFlags: 0
@@ -41975,6 +42031,10 @@ MonoBehaviour:
   greenGlobe: {fileID: 178377743}
   blueGlobe: {fileID: 673613848}
   fishTank: {fileID: 872344276}
+  catPoster: {fileID: 1061412333}
+  mistakePoster: {fileID: 1372572807}
+  rulesPoster: {fileID: 568436832}
+  bullyPoster: {fileID: 229857325}
 --- !u!82 &1698954389
 AudioSource:
   m_ObjectHideFlags: 0

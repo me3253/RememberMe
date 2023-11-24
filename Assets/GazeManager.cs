@@ -6,7 +6,7 @@ using UnityEngine;
 public class GazeManager : MonoBehaviour
 {
     public LayerMask gazeReceivingMask;
-    public GameObject student, classWall, book, greenGlobe, blueGlobe, fishTank;
+    public GameObject student, classWall, book, greenGlobe, blueGlobe, fishTank, catPoster, mistakePoster, rulesPoster, bullyPoster;
 
     private GameObject[] fishes = new GameObject[3];
 
@@ -48,6 +48,12 @@ public class GazeManager : MonoBehaviour
             }
             else if (lookCounter == 3 && !student.GetComponent<LookUp>().neckRaised)
                 student.GetComponent<LookUp>().RaiseNeck();
+            else if (lookCounter == 4 && !catPoster.GetComponent<SwapMaterial>().swapped) {
+                catPoster.GetComponent<SwapMaterial>().Swap();
+                mistakePoster.GetComponent<SwapMaterial>().Swap();
+                rulesPoster.GetComponent<SwapMaterial>().Swap();
+                bullyPoster.GetComponent<SwapMaterial>().Swap();
+            }
         }
 
         if (lookAway)
