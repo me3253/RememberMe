@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GazeManager : MonoBehaviour
 {
     public LayerMask gazeReceivingMask;
-    public GameObject student, classWall, book, greenGlobe, blueGlobe, fishTank, characterManager, audioManager, materialManager;
+    public GameObject student, classWall, book, greenGlobe, blueGlobe, fishTank, characterManager, audioManager, materialManager, darkEndState;
 
     private GameObject[] fishes = new GameObject[3];
     private CharacterManager charManager;
@@ -15,6 +16,7 @@ public class GazeManager : MonoBehaviour
     private new Camera camera;
     private int lookCounter = 0;
     private bool lookAway = false;
+    private float endScreenTime;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,12 @@ public class GazeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (darkEndState.activeSelf) {
+            endScreenTime += Time.deltaTime;
+            if (endScreenTime >= 5)
+                SceneManager.LoadScene("Title");
+        }
+
         RaycastHit hit;
 
         if (!Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, Mathf.Infinity, gazeReceivingMask))
@@ -69,6 +77,7 @@ public class GazeManager : MonoBehaviour
             matManager.rulesPoster.GetComponent<SwapMaterial>().Swap();
             matManager.bullyPoster.GetComponent<SwapMaterial>().Swap();
             sfx.horror.Play();
+            student.GetComponent<Jumpscare>().setPosition();
         }
 
         if (lookAway)
@@ -94,9 +103,15 @@ public class GazeManager : MonoBehaviour
             }
             else if (lookCounter == 5) {
                 sfx.scream.Play();
+                student.GetComponent<Jumpscare>().startScare = true;
             }
 
             lookAway = true;
         }
+    }
+
+    private void OnTriggerEnter(Collider collision) {
+        if (collision.gameObject == student)
+            darkEndState.SetActive(true);
     }
 }
