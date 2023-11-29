@@ -7,13 +7,14 @@ using UnityEngine.SceneManagement;
 public class GazeManager : MonoBehaviour
 {
     public LayerMask gazeReceivingMask;
-    public GameObject student, classWall, book, greenGlobe, blueGlobe, fishTank, characterManager, audioManager, materialManager, headManager, darkEndState;
+    public GameObject student, classWall, greenGlobe, blueGlobe, fishTank, characterManager, audioManager, materialManager, headManager, bookManager, darkEndState;
 
     private GameObject[] fishes = new GameObject[3];
     private CharacterManager charManager;
     private AudioManager sfx;
     private MaterialManager matManager;
     private HeadManager heads;
+    private BookManager books;
     private new Camera camera;
     private int lookCounter = 0;
     private bool lookAway = false;
@@ -27,6 +28,7 @@ public class GazeManager : MonoBehaviour
         sfx = audioManager.GetComponent<AudioManager>();
         matManager = materialManager.GetComponent<MaterialManager>();
         heads = headManager.GetComponent<HeadManager>();
+        books = bookManager.GetComponent<BookManager>();
         fishes[0] = fishTank.GetNamedChild("Fish");
         fishes[1] = fishTank.GetNamedChild("Fish (1)");
         fishes[2] = fishTank.GetNamedChild("Fish (2)");
@@ -51,12 +53,14 @@ public class GazeManager : MonoBehaviour
         if (hit.collider.gameObject == classWall && lookCounter < 4) {
             lookAway = false;
 
-            if (lookCounter == 1 && !book.GetComponent<ThrowBook>().thrown) {
-                book.GetComponent<ThrowBook>().Throw();
+            if (lookCounter == 1 && !books.greenBook.GetComponent<ThrowBook>().thrown) {
+                books.greenBook.GetComponent<ThrowBook>().Throw(0, 0, -50);
                 charManager.HideCharacter("yellow");
                 sfx.breathing.Play();
             }
             else if (lookCounter == 2 && !greenGlobe.GetComponent<Rotate>().enableRotation) {
+                books.redBook.GetComponent<ThrowBook>().Throw(0, 0, -60);
+                books.blueBook.GetComponent<ThrowBook>().Throw(1, 0, -50);
                 greenGlobe.GetComponent<Rotate>().enableRotation = true;
                 blueGlobe.GetComponent<Rotate>().enableRotation = true;
                 foreach (GameObject fish in fishes)

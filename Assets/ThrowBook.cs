@@ -9,8 +9,8 @@ public class ThrowBook : MonoBehaviour
 
     public bool thrown{get; private set;} = false;
 
-    public void Throw() {
-        this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -50);
+    public void Throw(float speedX, float speedY, float speedZ) {
+        this.GetComponent<Rigidbody>().velocity = new Vector3(speedX, speedY, speedZ);
         thrown = true;
     }
 
